@@ -10,53 +10,86 @@ class ResultCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Card(
-      elevation: 2,
+      elevation: 4,
       clipBehavior: Clip.antiAlias,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      child: Padding(
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          children: [
-            Text('Monthly EMI', style: Theme.of(context).textTheme.titleMedium),
-
-            const SizedBox(height: 12),
-
-            Text(
-              CurrencyFormatter.format(result.monthlyEmi),
-              style: Theme.of(
-                context,
-              ).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+      child: Column(
+        children: [
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(24),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [colorScheme.primary, colorScheme.primaryContainer],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
             ),
+            child: Column(
+              children: [
+                const Icon(
+                  Icons.account_balance_wallet_rounded,
+                  color: Colors.white,
+                  size: 40,
+                ),
 
-            const SizedBox(height: 24),
+                const SizedBox(height: 12),
 
-            SummaryTile(
-              title: 'Principal',
-              value: CurrencyFormatter.format(result.principal),
-              icon: Icons.account_balance_wallet_outlined,
-              iconColor: Colors.blue,
+                const Text(
+                  'Monthly EMI',
+                  style: TextStyle(color: Colors.white70, fontSize: 16),
+                ),
+
+                const SizedBox(height: 8),
+
+                Text(
+                  CurrencyFormatter.format(result.monthlyEmi),
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 34,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
             ),
+          ),
 
-            const SizedBox(height: 12),
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              children: [
+                SummaryTile(
+                  title: 'Principal',
+                  value: CurrencyFormatter.format(result.principal),
+                  icon: Icons.account_balance_wallet_outlined,
+                  iconColor: Colors.green,
+                ),
 
-            SummaryTile(
-              title: 'Interest',
-              value: CurrencyFormatter.format(result.totalInterest),
-              icon: Icons.trending_up,
-              iconColor: Colors.orange,
+                const SizedBox(height: 12),
+
+                SummaryTile(
+                  title: 'Interest',
+                  value: CurrencyFormatter.format(result.totalInterest),
+                  icon: Icons.trending_up,
+                  iconColor: Colors.orange,
+                ),
+
+                const SizedBox(height: 12),
+
+                SummaryTile(
+                  title: 'Total Payment',
+                  value: CurrencyFormatter.format(result.totalPayment),
+                  icon: Icons.payments_outlined,
+                  iconColor: colorScheme.primary,
+                ),
+              ],
             ),
-
-            const SizedBox(height: 12),
-
-            SummaryTile(
-              title: 'Total Payment',
-              value: CurrencyFormatter.format(result.totalPayment),
-              icon: Icons.payments_outlined,
-              iconColor: Colors.green,
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

@@ -2,6 +2,7 @@ import 'package:emi_calc/core/utils/currency_formatter.dart';
 import 'package:emi_calc/features/emi/model/emi_result.dart';
 import 'package:emi_calc/features/emi/service/emi_calculator_service.dart';
 import 'package:emi_calc/features/emi/widgets/amount_slider.dart';
+import 'package:emi_calc/features/emi/widgets/pie_chart_widget.dart';
 import 'package:emi_calc/features/emi/widgets/result_card.dart';
 import 'package:flutter/material.dart';
 
@@ -87,6 +88,13 @@ class _EmiCalculatorScreenState extends State<EmiCalculatorScreen> {
               tenure = value;
               _calculate();
             },
+          ),
+
+          const SizedBox(height: 24),
+
+          PieChartWidget(
+            principal: result.principal,
+            interest: result.totalInterest,
           ),
 
           const SizedBox(height: 30),

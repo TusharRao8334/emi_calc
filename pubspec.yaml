@@ -44,7 +44,7 @@ dependencies:
   # -----------------------------
   # Charts
   # -----------------------------
-  fl_chart: ^1.0.0
+  fl_chart: ^1.1.1
 
   # -----------------------------
   # Animations
@@ -61,7 +61,7 @@ dependencies:
   # -----------------------------
   # Ads
   # -----------------------------
-  google_mobile_ads: ^6.0.0
+  # google_mobile_ads: ^6.0.0
 
 dev_dependencies:
   flutter_test:
