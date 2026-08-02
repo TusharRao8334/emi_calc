@@ -1,3 +1,5 @@
+import 'package:emi_calc/app/theme/app_theme.dart';
+import 'package:emi_calc/features/home/screen/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class EmiCalcApp extends StatelessWidget {
@@ -11,15 +13,11 @@ class EmiCalcApp extends StatelessWidget {
 
       themeMode: ThemeMode.system,
 
-      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.green),
+      theme: AppTheme.lightTheme,
 
-      darkTheme: ThemeData(
-        useMaterial3: true,
-        brightness: Brightness.dark,
-        colorSchemeSeed: Colors.green,
-      ),
+      darkTheme: AppTheme.darkTheme,
 
-      home: const Scaffold(body: Center(child: Text('EMI Calc'))),
+      home: const HomeScreen(),
     );
   }
 }
